@@ -3,20 +3,13 @@
         <h2 class="text-center">Добавление учета заболеваемости</h2>
         <form action="nurse/adding_accounting" method="post">
             <div class="mb-3">
-                <label for="diagnosis" class="form-label">Диагноз</label>
-                <select name="diagnosis" class="form-select">
-                    <option value="Бактериальная дизентерия">Бактериальная дизентерия</option>
-                    <option value="Энтерит">Энтерит</option>
-                    <option value="Колит">Колит</option>
-                    <option value="Гастроэнтерит">Гастроэнтерит</option>
-                    <option value="Скарлатина">Скарлатина</option>
-                    <option value="Ангина (острый тонзилит)">Ангина (острый тонзилит)</option>
-                    <option value="Грипп">Грипп</option>
-                    <option value="Острая инфекция верхних дыхательных путей">Острая инфекция верхних дыхательных путей</option>
-                    <option value="Пневномия">Пневномия</option>
-                    <option value="Несчастный случай">Несчастный случай</option>
-                    <option value="Травма">Травма</option>
-                    <option value="Другие заболевания">Другие заболевания</option>
+                <label for="id_morbidity" class="form-label">Диагноз</label>
+                <select name="id_morbidity" class="form-select">
+                    <?php
+                    foreach($morbidity as $row){
+                        echo '<option value="'.$row['id_morbidity'].'">'.$row['name_morbidity'].'</option>';
+                    }
+                    ?>
                 </select>
             </div>
             <div class="mb-3">

@@ -32,7 +32,7 @@
                 foreach($result as $row){
                     echo '<tr>
                     <td>'.$row['name_kid'].'</td>
-                    <td>'.$row['diagnosis'].'</td>
+                    <td>'.$row['name_morbidity'].'</td>
                     <td>'.$row['data_start'].'</td>
                     <td>'.$row['data_end'].'</td>
                     </tr>';

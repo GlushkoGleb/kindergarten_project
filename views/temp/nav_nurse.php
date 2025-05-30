@@ -18,6 +18,12 @@
         <li class="nav-item">
           <a class="nav-link" href="nurse/lists_children">Списки болевших детей по группе</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="nurse/analysis_children">Анализ здоровья детей</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="nurse/morbidity_analysis">Анализ заболеваемости детей</a>
+        </li>
       </ul>
     </div>
   </div>

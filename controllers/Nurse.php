@@ -60,13 +60,15 @@ class Nurse extends CI_Controller{
         $this->load->view('temp/nav_nurse.php');
         $this->load->model('kids');
         $this->load->model('accounting');
+        $this->load->model('morbidity');
         $data['kids'] = $this->kids->select_kids();
+        $data['morbidity'] = $this->morbidity->select_morbidity();
         if(!empty($_POST)){
-            $diagnosis = $_POST['diagnosis'];
+            $id_morbidity = $_POST['id_morbidity'];
             $id_kid = $_POST['id_kid'];
             $data_start = $_POST['data_start'];
             $data_end = $_POST['data_end'];
-            $this->accounting->add_accounting($id_kid, $diagnosis, $data_start, $data_end);
+            $this->accounting->add_accounting($id_kid, $id_morbidity, $data_start, $data_end);
         }
         $this->load->view('adding_accounting.php', $data);
         $this->load->view('temp/footer.php');
@@ -96,6 +98,32 @@ class Nurse extends CI_Controller{
             $data['result'] = $this->accounting->lists_children($id_group);
         }
         $this->load->view('lists_children.php', $data);
+        $this->load->view('temp/footer.php');
+    }
+    public function morbidity_analysis(){
+        $this->load->view('temp/nav_nurse.php');
+        $this->load->view('temp/head.php');
+        $this->load->model('accounting');
+        $data['result'] = array();
+        if(!empty($_POST)){
+            $data_start = $_POST['data_start'];
+            $data_end = $_POST['data_end'];
+            $data['result'] = $this->accounting->morbidity_analysis($data_start, $data_end);
+        }
+        $this->load->view('morbidity_analysis.php', $data);
+        $this->load->view('temp/footer.php');
+    }
+    public function analysis_children(){
+        $this->load->view('temp/nav_nurse.php');
+        $this->load->view('temp/head.php');
+        $this->load->model('accounting');
+        $data['result'] = array();
+        if(!empty($_POST)){
+            $data_start = $_POST['data_start'];
+            $data_end = $_POST['data_end'];
+            $data['result'] = $this->accounting->analysis_children($data_start, $data_end);
+        }
+        $this->load->view('analysis_children.php', $data);
         $this->load->view('temp/footer.php');
     }
 }
